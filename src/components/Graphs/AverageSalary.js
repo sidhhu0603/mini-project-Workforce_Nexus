@@ -14,10 +14,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: "none",
   textAlign: "center",
   padding: theme.spacing(2, 0),
-  // color: theme.palette.primary.darker,
-  // color: theme.palette.background.paper,
   color: "#095b80",
-  // backgroundColor: theme.palette.primary.lighter,
   backgroundColor: "#8cd7f7",
 }));
 
@@ -30,17 +27,12 @@ const IconWrapperStyle = styled("div")(({ theme }) => ({
   height: theme.spacing(8),
   justifyContent: "center",
   marginBottom: theme.spacing(1),
-  color: "#000000", // color: theme.palette.warning.dark,
-  // color: theme.palette.error.dark, // color: theme.palette.warning.dark,
-  //   backgroundImage: `linear-gradient(135deg, ${alpha(
-  //     theme.palette.primary.light,
-  //     0.24
-  //   )} 50%, ${alpha(theme.palette.secondary.light, 0.24)} 50%)`,
-  // }));
+  color: "#000000",
   backgroundColor: theme.palette.grey[200],
 }));
 
-// ----------------------------------------------------------------------
+// Define the static exchange rate from GBP to INR
+const exchangeRateGBPtoINR = 100; // Replace with the actual exchange rate
 
 export default function AverageSalary() {
   const [loading, setLoading] = useState(true);
@@ -55,14 +47,18 @@ export default function AverageSalary() {
     filtered.forEach((associate) => {
       salaries.push(parseInt(associate.Salary));
     });
-    setChartData(_.sum(salaries) / salaries.length);
+    const averageSalaryGBP = _.sum(salaries) / salaries.length;
+    const averageSalaryINR = averageSalaryGBP * exchangeRateGBPtoINR;
+    setChartData(averageSalaryINR);
     setLoading(false);
   }, [associates]);
-  const formatter = new Intl.NumberFormat(undefined, {
+
+  const formatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
-    currency: "GBP",
+    currency: "INR",
     maximumSignificantDigits: 3,
   });
+
   return (
     <>
       <RootStyle>
@@ -76,7 +72,7 @@ export default function AverageSalary() {
               {chartData ? formatter.format(chartData) : null}
             </Typography>
             <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-              Average Salary
+              Average Salary (in INR)
             </Typography>
           </div>
         )}

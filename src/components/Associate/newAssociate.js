@@ -183,9 +183,10 @@ const stepOneValidationSchema = Yup.object({
 });
 
 const StepOne = (props) => {
-  const { allOffices } = useContext(officesContext);
-  const { allDepartments } = useContext(departmentsContext);
+  const allOffices = ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata"];
+  const allDepartments = ["IT", "Finance", "Marketing", "HR", "Sales"];
   const { associates } = useContext(associatesContext);
+
   const handleSubmit = (values) => {
     props.next(values);
   };
@@ -416,6 +417,7 @@ const StepOne = (props) => {
             )}
             <Grid item sx={4} sm={4} xl={4}>
               <Field
+
                 name="Manager"
                 fullWidth
                 component={Autocomplete}
@@ -435,7 +437,6 @@ const StepOne = (props) => {
                   <TextField
                     {...params}
                     label="Manager"
-                    required
                     variant="outlined"
                     fullWidth={true}
                   />
@@ -488,7 +489,30 @@ const StepOne = (props) => {
               </LocalizationProvider>
             </Grid>
             <ErrorMessage name="DOB" />
+            <Grid item sx={4} sm={4} xl={4}>
+              <Field
+                fullWidth
+                required
+                name="Username"
+                size="small"
+                label="User Name"
+                as={TextField}
+              />
+              <ErrorMessage name="Username" />
+            </Grid>
+            <Grid item sx={4} sm={4} xl={4}>
+              <Field
+                fullWidth
+                required
+                name="Password"
+                size="small"
+                label="Password"
+                as={TextField}
+              />
+              <ErrorMessage name="Password" />
+            </Grid>
           </Grid>
+          
           <Grid
             sx={{ p: 3, pb: 2 }}
             container

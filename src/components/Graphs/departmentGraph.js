@@ -6,7 +6,7 @@ import { Card, CardHeader, Stack } from "@mui/material";
 // utils
 import { fNumber } from "../../utils/formatNumber.js";
 //
-import BaseOptionChart from "../charts/BaseOptionChart";
+import BaseOptionChart from "../charts/BaseOptionChart.js";
 import { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useContext } from "react";
@@ -38,9 +38,9 @@ const ChartWrapperStyle = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function DepartmentGraph() {
-  const { allDepartments } = useContext(departmentsContext);
+  const allDepartments = ["IT", "Finance", "Marketing", "HR", "Sales"];
   const { associates } = useContext(associatesContext);
-
+  
   const [chartData, setChartData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -118,14 +118,16 @@ export default function DepartmentGraph() {
         </Stack>
       )}
       {chartData && chartData.length > 1 && (
+        <>
         <ChartWrapperStyle dir="ltr">
           <ReactApexChart
             type="pie"
             series={chartData}
             options={chartOptions}
-            // height={280}
+            height={280}
           />
         </ChartWrapperStyle>
+        </>
       )}
     </Card>
   );

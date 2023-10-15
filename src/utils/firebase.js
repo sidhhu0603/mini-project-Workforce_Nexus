@@ -8,12 +8,13 @@ import { getDatabase } from "firebase/database";
 // } = require("firebase/app-check");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCoCpgoXcxItAve9MJ5oTnnKfrTSIxXxWc",
-  authDomain: "sem5-hrms.firebaseapp.com",
-  projectId: "sem5-hrms",
-  storageBucket: "sem5-hrms.appspot.com",
-  messagingSenderId: "334753844354",
-  appId: "1:334753844354:web:280169a863a7daf3a2389b"
+  apiKey: "AIzaSyAZETb4QwjdFoFytTQ7LC4_lyvktSZXmcw",
+  authDomain: "employee-a0b42.firebaseapp.com",
+  projectId: "employee-a0b42",
+  storageBucket: "employee-a0b42.appspot.com",
+  messagingSenderId: "686308370974",
+  appId: "1:686308370974:web:da07753408b4218ae4dc0f",
+  measurementId: "G-T5GBT1FTF6"
 };
 // Initialize Firebase
 

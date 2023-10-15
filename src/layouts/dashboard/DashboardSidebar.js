@@ -55,7 +55,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     >
       <Box sx={{ px: 2.5, py: 3 }}>
         <Grid container direction="column" alignItems="center">
-          <Logo sx={{ width: 90 }} color="white" />
+          <Logo sx={{ width: 200 }} color="white" />
         </Grid>
       </Box>
 

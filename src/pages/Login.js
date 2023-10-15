@@ -67,7 +67,7 @@ const Login = () => {
 
   return (
     <div>
-      <Page title="HR Core - Login">
+      <Page title="Workforce Nexus - Login">
         {isLoginScreen && (
           <Grid
             sx={{ p: 1, pb: 5, pt: 6 }}
@@ -122,7 +122,7 @@ const Login = () => {
                           rowGap={1}
                         >
                           <Grid item xs={12} xl={12}>
-                            <Logo sx={{ width: 200, pb: 2 }} />
+                            <Logo sx={{ width: 400, pb: 2 }} />
                           </Grid>
 
                           <Field
@@ -155,20 +155,6 @@ const Login = () => {
                         >
                           Login
                         </Button>
-
-                         <Button
-                          variant="outlined"
-                          fullWidth
-                          onClick={() => handleDemoLogin()}
-                          sx={{
-                            width: "100%",
-                            mb: 2,
-                            color: "white",
-                            backgroundImage: `linear-gradient(to right, #a28ae5, #af7be9, #c168e9, #d54de3, #eb12d8)`,
-                          }}
-                        >
-                          Demo login
-                        </Button> 
 
                         <Button
                           type="button"
@@ -212,7 +198,7 @@ const Login = () => {
                       flexDirection: "row",
                     }}
                   >
-                    <Card sx={{ width: 380 }}>
+                    <Card sx={{ width: 500 }}>
                       <Grid
                         sx={{ p: 1, pb: 5 }}
                         container
@@ -221,7 +207,7 @@ const Login = () => {
                         direction="column"
                       >
                         <Grid item xs={12} xl={12}>
-                          <Logo sx={{ width: 200, pb: 2 }} />
+                          <Logo sx={{ width: 400, pb: 2 }} />
                         </Grid>
                         <Grid item xs={12} sm={12} lg={12}>
                           <Grid item sx={{ pb: 2 }}>

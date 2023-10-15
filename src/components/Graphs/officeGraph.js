@@ -37,7 +37,7 @@ const ChartWrapperStyle = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function OfficeGraph() {
-  const { allOffices } = useContext(officesContext);
+  const allOffices = ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata"];
   const OFFICES = allOffices.flat(2);
   const { associates } = useContext(associatesContext);
   const theme = useTheme();

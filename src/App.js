@@ -24,6 +24,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "./utils/firebase";
 import { AuthContext } from "./utils/context/AuthContext";
+import { useAuth } from "./utils/context/AuthContext";
 import {
   createUserWithEmailAndPassword,
   updateEmail,
@@ -49,6 +50,7 @@ import Admin from "./pages/Admin";
 import ImportAssociates from "./components/Associate/Admin/ImportAssociates";
 import GiveThanks from "./components/Thanks/GiveThanks";
 import Holidays from "./pages/Holidays";
+import Attendance from "./pages/attendance";
 function App() {
   const associatesCollectionRef = collection(db, "Associates");
   const [updateAssociates, setUpdateAssociates] = useState(1);
@@ -97,18 +99,17 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-
       if (user != null) {
-        setIsDemo(user.email === process.env.REACT_APP_DEMO_LOGIN);
+      console.log("Current User:", user);
+      }
+      if (user != null) {
+        //setIsDemo(user.email === process.env.REACT_APP_DEMO_LOGIN);
         const usersCollectionRef = doc(db, "Users", user.uid);
 
         getDoc(usersCollectionRef).then((result) => {
-          // setUserData(result.data());
+          setUserData(result.data());
           const associatesCollectionRef = doc(
-            db,
-            "Associates",
-            result.data().AssociateID
-          );
+            db,"Associates",result.data().AssociateID);
           getDoc(associatesCollectionRef).then((res) => {
             setUserData({ ...res.data() });
           });
@@ -121,7 +122,7 @@ function App() {
   useEffect(() => {
     //
 
-    document.title = "HR Core";
+    document.title = "Workforce Nexus";
     const getAssociates = async () => {
       // const q = query(associatesCollectionRef, orderBy("LastName"));
       // const data = await getDocs(q);
@@ -164,6 +165,7 @@ function App() {
     updateUserEmail,
     updateUserPassword,
   };
+  
   useEffect(() => {
     const getDTDB = () => {
       const dbrt = getDatabase();
@@ -271,6 +273,14 @@ function App() {
                                 }
                               ></Route>
                               <Route
+                                path="dashboard/attendance"
+                                element={
+                                  <PrivateRoute role="Standard">
+                                    <Attendance />
+                                  </PrivateRoute>
+                                }
+                              ></Route>
+                              <Route
                                 path="dashboard/associates"
                                 element={
                                   <PrivateRoute role="Standard">
@@ -289,7 +299,7 @@ function App() {
                               <Route
                                 path="dashboard/associates/newassociate"
                                 element={
-                                  <PrivateRoute role="Standard">
+                                  <PrivateRoute role="Admin">
                                     <NewAssociate />
                                   </PrivateRoute>
                                 }
@@ -321,7 +331,7 @@ function App() {
                               <Route
                                 path="dashboard/register"
                                 element={
-                                  <PrivateRoute role="Admin">
+                                  <PrivateRoute role="Standard">
                                     <SignUp />
                                   </PrivateRoute>
                                 }
@@ -354,7 +364,7 @@ function App() {
                               <Route
                                 path="dashboard/associates/newassociate"
                                 element={
-                                  <PrivateRoute role="Standard">
+                                  <PrivateRoute role="Admin">
                                     <NewAssociate />
                                   </PrivateRoute>
                                 }
@@ -362,7 +372,7 @@ function App() {
                               <Route
                                 path="thanks/givethanks"
                                 element={
-                                  <PrivateRoute role="Stabdard">
+                                  <PrivateRoute role="Standard">
                                     <GiveThanks />
                                   </PrivateRoute>
                                 }

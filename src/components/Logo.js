@@ -13,10 +13,10 @@ export default function Logo({ sx, color }) {
     return (
       <Box
         component="img"
-        src="/images/hr core logo white text.png"
+        src="/images/WorkForceNexus_logo4.png"
         sx={{ ...sx }}
       />
     );
   }
-  return <Box component="img" src="/images/hr core logo .png" sx={{ ...sx }} />;
+  return <Box component="img" src="/images/WorkForceNexus_logo5.png" sx={{ ...sx }} />;
 }

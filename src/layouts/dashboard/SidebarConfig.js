@@ -19,6 +19,10 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill),
   },
   {
+    title: "Attendance",
+    path: "/dashboard/attendance",
+  },
+  {
     title: "associates",
     // path: "/dashboard/associates",
     icon: getIcon(peopleFill),
@@ -43,11 +47,11 @@ const sidebarConfig = [
     path: "/tasks",
     icon: getIcon(clipboardTaskListLtr20Filled),
   },
-  {
-    title: "Holidays",
-    path: "/holidays",
-    icon: getIcon(umbrellaBeach),
-  },
+  //{
+  //  title: "Holidays",
+  //  path: "/holidays",
+  //  icon: getIcon(umbrellaBeach),
+  //},
   {
     title: "Thanks",
     path: "/thanks",
@@ -63,11 +67,11 @@ const sidebarConfig = [
       },
     ],
   },
-  // {
-  //   title: "register",
-  //   path: "/dashboard/register",
-  //   icon: getIcon(personAddFill),
-  // },
+  {
+    title: "register",
+    path: "/dashboard/register",
+    icon: getIcon(personAddFill),
+  },
   {
     title: "admin",
     path: "/admin",

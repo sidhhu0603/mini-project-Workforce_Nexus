@@ -57,7 +57,7 @@ DashboardNavbar.propTypes = {
 };
 
 export default function DashboardNavbar({ onOpenSidebar }) {
-  const { associates, setAssciates } = useContext(associatesContext);
+  const { associates, setAssociates } = useContext(associatesContext);
 
   const location = useLocation();
   let pathArray = location.pathname.split("/").filter((x) => x);

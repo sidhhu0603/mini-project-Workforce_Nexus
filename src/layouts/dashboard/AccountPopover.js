@@ -31,11 +31,12 @@ export default function AccountPopover() {
 
   const handleOpen = () => {
     setOpen(true);
+    console.log(userData);
   };
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   return (
     <>
       {userData && (
@@ -82,7 +83,7 @@ export default function AccountPopover() {
         <Divider sx={{ my: 1 }} />
         <MenuItem
           key={"Home"}
-          to={`#`}
+          to={`/dashboard/home`}
           component={RouterLink}
           onClick={handleClose}
           sx={{ typography: "body2", py: 1, px: 2.5 }}

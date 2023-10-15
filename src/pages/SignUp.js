@@ -1,3 +1,5 @@
+import { getFirestore, addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { db } from "../utils/firebase";
 import {
   Button,
   Box,
@@ -34,15 +36,15 @@ const SignUp = () => {
     const associate = associates.filter(
       (ass) => ass.AssociateID === associateID
     );
-    // const formData = {
-    //   AssociateID: associate.id,
-    //   FirstName: associate.FirstName,
-    //   LastName: associate.LastName,
-    //   Role: role,
-    // };
-    // const docRef = await addDoc(collection(db, "Users"), formData);
+    const formData = {
+      AssociateID: associate.id,
+      FirstName: associate.FirstName,
+      LastName: associate.LastName,
+      Role: role,
+    };
+    const docRef = await addDoc(collection(db, "Users"), formData);
   };
-  // const { signup } = useAuth();
+  const { signup } = useAuth();
   const handleChange = (prop) => (event) => {
     setNewUser({ ...newUser, [prop]: event.target.value });
   };
@@ -68,18 +70,22 @@ const SignUp = () => {
     }),
   });
   const handleSubmit = async () => {
-    console.log("submit");
+    // Log the updated chosenProfile
     console.log(chosenProfile);
-    // await signup(newUser.Email.toString(), newUser.Password.toString());
-    uploadToFirebase(chosenProfile.AssociateID, chosenProfile.Role);
+  
+    // Call your asynchronous function after setting the chosenProfile
+     await signup(newUser.Email.toString(), newUser.Password.toString());
+     uploadToFirebase(chosenProfile.AssociateID, chosenProfile.Role);
   };
+  
   const handleValues = (event) => {
-    console.log(event.target.value);
+    const { name, value } = event.target;
     setChosenProfile({
       ...chosenProfile,
-      [event.target.name]: event.target.value,
+      [name]: value,
     });
   };
+  
   return (
     <Formik
       validationSchema={stepOneValidationSchema}
@@ -223,7 +229,7 @@ const SignUp = () => {
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={12} lg={12}>
-                    <Button type="submit" variant="contained" fullWidth={true}>
+                    <Button type="submit" variant="contained" fullWidth={true} onClick={handleSubmit}>
                       Sign Up
                     </Button>
                   </Grid>

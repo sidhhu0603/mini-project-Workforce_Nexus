@@ -24,7 +24,7 @@ export default function WelcomeCard() {
             <Grid container direction="column" justifyContent="flex-start">
               <Grid item>
                 <Typography variant="h4">
-                  Welcome {userData.FirstName}!
+                  Hello {userData.FirstName}!
                 </Typography>
 
                 {/* <Typography variant="h4">HR Core!</Typography> */}
@@ -32,7 +32,7 @@ export default function WelcomeCard() {
 
               <Grid item sx={{ pt: 1, pb: 1 }}>
                 <Typography variant="h6">
-                  Start managing your employees from anywhere!
+                  Welcome to the smart HR system!
                 </Typography>
               </Grid>
 

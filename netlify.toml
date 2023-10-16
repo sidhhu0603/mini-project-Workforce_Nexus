@@ -2,3 +2,12 @@
   from = "/*"
   to = "/"
   status = 200
+
+[build]
+  command = "npm run build" # Specify the build command for your React app
+
+[build.environment]
+  CI = "true" # Set CI environment variable to true to ignore warnings
+
+[build.publish]
+  directory = "build" # Specify the build directory where your React app's build files are located

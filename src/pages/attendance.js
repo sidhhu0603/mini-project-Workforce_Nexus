@@ -45,7 +45,7 @@ function Attendance() {
           const punchInTime = new Date().toLocaleString();
           setLocation({ latitude, longitude, punchInTime });
           setPunchData([...punchData, { punchIn: punchInTime }]);
-          alert("Attendance Recorded!");
+          alert("Attendance has been Recorded!");
         } else {
           alert("You are not at the office location. Punch In is not allowed.");
         }
